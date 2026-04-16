@@ -1,68 +1,123 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>For Aish 🤍</title>
+
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background: #0f0f1a;
+      background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
       font-family: 'Segoe UI', sans-serif;
       color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      overflow: hidden;
     }
 
-    .box {
-      background: rgba(255,255,255,0.05);
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background: rgba(255,255,255,0.08);
       padding: 40px;
       border-radius: 20px;
-      max-width: 400px;
+      backdrop-filter: blur(12px);
+    }
+
+    h1 {
+      margin-bottom: 20px;
     }
 
     button {
       padding: 10px 20px;
-      border: none;
       border-radius: 20px;
+      border: none;
       background: white;
       color: black;
       cursor: pointer;
-      margin-top: 15px;
     }
 
-    #msg {
+    #text {
       margin-top: 20px;
-      display: none;
-      line-height: 1.6;
+      font-size: 1.2em;
+      min-height: 120px;
+      line-height: 1.6em;
     }
+
+    /* 🌸 Flowers */
+    .flower {
+      position: absolute;
+      font-size: 20px;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
+    }
+
   </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="center">
   <h1>For Aish 🤍</h1>
-  <button onclick="show()">Open</button>
-
-  <div id="msg">
-    <p>
-      Aish…<br><br>
-      I know I messed up.<br>
-      And I shouldn’t have done that.<br><br>
-      I understand if you’re hurt…<br>
-      but I genuinely didn’t mean to hurt you.<br><br>
-      You matter to me more than I showed.<br><br>
-      I’m really sorry.<br><br>
-      I’ll do better.
-    </p>
-  </div>
+  <button onclick="start()">Open</button>
+  <div id="text"></div>
 </div>
 
 <script>
-function show() {
-  document.getElementById("msg").style.display = "block";
+const lines = [
+  "Aish...",
+  "I know I messed up.",
+  "I shouldn’t have done that.",
+  "I didn’t realise how much it would hurt you.",
+  "But I understand now.",
+  "You matter to me more than I showed.",
+  "And I really don’t want to lose you.",
+  "I’m genuinely sorry.",
+  "I’ll do better.",
+  "Just… trust me one more time? 🥺"
+];
+
+let i = 0;
+
+function start() {
+  document.querySelector("button").style.display = "none";
+  typeLine();
+  spawnFlowers();
+}
+
+function typeLine() {
+  if (i < lines.length) {
+    let line = document.createElement("div");
+    document.getElementById("text").appendChild(line);
+    typeWriter(lines[i], line, 0);
+    i++;
+    setTimeout(typeLine, 2000);
+  }
+}
+
+function typeWriter(text, element, j) {
+  if (j < text.length) {
+    element.innerHTML += text.charAt(j);
+    setTimeout(() => typeWriter(text, element, j + 1), 40);
+  }
+}
+
+function spawnFlowers() {
+  setInterval(() => {
+    let flower = document.createElement("div");
+    flower.className = "flower";
+    flower.innerHTML = "🌸";
+    flower.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(flower);
+
+    setTimeout(() => flower.remove(), 8000);
+  }, 600);
 }
 </script>
 
