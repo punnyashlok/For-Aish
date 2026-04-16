@@ -2,123 +2,67 @@
 <html>
 <head>
   <title>For Aish 🤍</title>
-
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
+      background: #0f0f1a;
       font-family: 'Segoe UI', sans-serif;
       color: white;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
-    .center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      background: rgba(255,255,255,0.08);
+    .box {
+      background: rgba(255,255,255,0.05);
       padding: 40px;
       border-radius: 20px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 0 40px rgba(0,0,0,0.5);
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
+      max-width: 400px;
     }
 
     button {
-      padding: 10px 25px;
+      padding: 10px 20px;
       border: none;
-      border-radius: 25px;
+      border-radius: 20px;
       background: white;
       color: black;
-      font-weight: bold;
       cursor: pointer;
+      margin-top: 15px;
     }
 
-    #text {
+    #msg {
       margin-top: 20px;
-      font-size: 1.2em;
-      line-height: 1.6em;
-      min-height: 120px;
-    }
-
-    .heart {
-      position: absolute;
-      color: pink;
-      animation: float 6s linear infinite;
-    }
-
-    @keyframes float {
-      from { transform: translateY(100vh); opacity: 1;}
-      to { transform: translateY(-10vh); opacity: 0;}
+      display: none;
+      line-height: 1.6;
     }
   </style>
 </head>
 
 <body>
 
-<div class="center">
+<div class="box">
   <h1>For Aish 🤍</h1>
-  <button onclick="start()">Open</button>
-  <div id="text"></div>
+  <button onclick="show()">Open</button>
+
+  <div id="msg">
+    <p>
+      Aish…<br><br>
+      I know I messed up.<br>
+      And I shouldn’t have done that.<br><br>
+      I understand if you’re hurt…<br>
+      but I genuinely didn’t mean to hurt you.<br><br>
+      You matter to me more than I showed.<br><br>
+      I’m really sorry.<br><br>
+      I’ll do better.
+    </p>
+  </div>
 </div>
 
 <script>
-const message = [
-  "Aish...",
-  "I know I messed up.",
-  "And honestly… I was really stupid for that.",
-  "I didn’t realise how much it would hurt you.",
-  "But I do now.",
-  "And it matters to me… because you matter to me.",
-  "You’re not just anyone… you’re my best friend.",
-  "And I hate that I made you feel this way.",
-  "I’m really sorry, Aish.",
-  "I won’t repeat it again.",
-  "Just… trust me one more time? 🥺"
-];
-
-let i = 0;
-
-function start() {
-  document.querySelector("button").style.display = "none";
-  typeLine();
-  spawnHearts();
-}
-
-function typeLine() {
-  if (i < message.length) {
-    let line = document.createElement("div");
-    document.getElementById("text").appendChild(line);
-    typeWriter(message[i], line, 0);
-    i++;
-    setTimeout(typeLine, 2000);
-  }
-}
-
-function typeWriter(text, element, j) {
-  if (j < text.length) {
-    element.innerHTML += text.charAt(j);
-    setTimeout(() => typeWriter(text, element, j + 1), 40);
-  }
-}
-
-function spawnHearts() {
-  setInterval(() => {
-    let heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "🤍";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 6000);
-  }, 500);
+function show() {
+  document.getElementById("msg").style.display = "block";
 }
 </script>
 
