@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Aish 🤍</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #0f0f1a;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 400px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: white;
+      color: black;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    #msg {
+      margin-top: 20px;
+      display: none;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>For Aish 🤍</h1>
+  <button onclick="show()">Open</button>
+
+  <div id="msg">
+    <p>
+      Aish…<br><br>
+      I know I messed up.<br>
+      And I shouldn’t have done that.<br><br>
+      I understand if you’re hurt…<br>
+      but I genuinely didn’t mean to hurt you.<br><br>
+      You matter to me more than I showed.<br><br>
+      I’m really sorry.<br><br>
+      I’ll do better.
+    </p>
+  </div>
+</div>
+
+<script>
+function show() {
+  document.getElementById("msg").style.display = "block";
+}
+</script>
+
+</body>
+</html>
